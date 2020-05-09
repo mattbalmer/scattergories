@@ -1,4 +1,4 @@
-# sternm Server
+# scattergories Server
 
 Describes the code standards & flow for the server side code.
 

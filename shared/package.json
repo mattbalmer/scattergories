@@ -1,5 +1,5 @@
 {
-    "name": "sternm-shared",
+    "name": "scattergories-shared",
     "version": "0.1.0",
     "devDependencies": {
         "chai": "^4.2.0",

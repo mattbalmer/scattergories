@@ -19,7 +19,7 @@ const sessionStore = new MongoStore({
 });
 
 const expressSession = session({
-  key: 'sternm.sid',
+  key: 'scattergories.sid',
   store: sessionStore,
   secret: Config.SESSION_SECRET,
   resave: false,
@@ -50,7 +50,7 @@ const httpServer = http.createServer(expressServer);
 const io = socketio.listen(httpServer, {});
 
 io.use(passportSocketIO.authorize({
-  key: 'sternm.sid',
+  key: 'scattergories.sid',
   store: sessionStore,
   secret: Config.SESSION_SECRET,
 }));

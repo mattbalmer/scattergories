@@ -1,10 +1,10 @@
-# sternm
+# scattergories
 
-sternm is a seed project, using Sockets, TypeScript, Express, React, Node, and mongo.
+scattergories is a seed project, using Sockets, TypeScript, Express, React, Node, and mongo.
 
 ## Setup
 
-To run sternm, you'll need to run two separate processes: the server, and client transpiler.
+To run scattergories, you'll need to run two separate processes: the server, and client transpiler.
 
 Open two tabs, cd into `client/` with one, and `server/` with the other. From each, run `npm i` to install the necessary parts, then run `npm start` to start their respective processes.
 
