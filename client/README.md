@@ -1,4 +1,4 @@
-# sternm Client
+# scattergories Client
 
 Describes the code standards & flow for the client side code.
 

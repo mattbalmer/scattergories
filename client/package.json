@@ -1,5 +1,5 @@
 {
-    "name": "sternm-client",
+    "name": "scattergories-client",
     "version": "0.1.0",
     "scripts": {
         "start": "./start.sh local",
