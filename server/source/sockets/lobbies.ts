@@ -4,7 +4,19 @@ import { areMatchingIDs } from 'utils/mongo';
 import { SocketClient, User, UserID, UserRole } from 'types';
 
 function getPassportUser(socket): User {
-  return socket && socket.request && socket.request.user;
+  const user: User = {
+    _id: 'test123', //uuidv4(),
+    profile: {
+      name: 'Testy McTestface',
+      avatar: ''
+    },
+    roles: [UserRole.ADMIN],
+    dates: {
+      created: new Date(),
+    },
+  };
+  return user;
+  // return socket && socket.request && socket.request.user;
 }
 
 function isAdmin(user: User): boolean {

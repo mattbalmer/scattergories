@@ -6,11 +6,10 @@ import exphbs from 'express-handlebars';
 import morgan from 'morgan';
 import connectMongo from 'connect-mongo';
 import socketio from 'socket.io';
-import passportSocketIO from 'passport.socketio';
 import http from 'http';
-import initPassport from 'lib/passport';
 import mongoose from 'lib/mongoose';
 import initSockets from './sockets';
+import { User, UserRole } from '@shared/types/schemas';
 // import raven from 'raven';
 
 const MongoStore = connectMongo(session);
@@ -43,17 +42,27 @@ expressServer.set('views', path.join(__dirname, './views'));
 
 expressServer.use(express.static(Config.STATIC_FILES_PATH));
 expressServer.use(expressSession);
-initPassport(expressServer);
+expressServer.use((req, res, next) => {
+  if (!req.user) {
+    const user: User = {
+      _id: 'test123', //uuidv4(),
+      profile: {
+        name: 'Testy McTestface',
+        avatar: ''
+      },
+      roles: [UserRole.ADMIN],
+      dates: {
+        created: new Date(),
+      },
+    };
+    req.user = user;
+  }
+  next();
+})
 expressServer.use(require('routes'));
 
 const httpServer = http.createServer(expressServer);
 const io = socketio.listen(httpServer, {});
-
-io.use(passportSocketIO.authorize({
-  key: 'scattergories.sid',
-  store: sessionStore,
-  secret: Config.SESSION_SECRET,
-}));
 
 initSockets({
   io,

@@ -5,15 +5,22 @@ const LobbySchema = new mongoose.Schema({
     type: String,
   },
 
+  // owner: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'User',
+  // },
+
   owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    type: String,
   },
 
   users: {
+    // type: [{
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'User',
+    // }],
     type: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      type: String,
     }],
   },
 
